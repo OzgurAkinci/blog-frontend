@@ -14,7 +14,9 @@ export class DashboardComponent implements OnInit {
   selected = [];
   constructor(private postService: PostService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.loadData();
+  }
 
   onActivate(event) {}
 
