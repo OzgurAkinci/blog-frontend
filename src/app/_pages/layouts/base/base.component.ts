@@ -17,38 +17,6 @@ export class BaseComponent extends RootLayout implements OnInit {
       routerLink: '/base/dashboard',
       iconType: 'fi',
       iconName: 'shield'
-    },
-    {
-      label: 'Extra',
-      iconType: 'fi',
-      iconName: 'box',
-      toggle: 'close',
-      submenu: [
-        {
-          label: '404 Page',
-          routerLink: '/auth/error/404',
-          iconType: 'letter',
-          iconName: 'pg'
-        },
-        {
-          label: '500 Page',
-          routerLink: '/auth/error/500',
-          iconType: 'letter',
-          iconName: 'pg'
-        },
-        {
-          label: 'Login',
-          routerLink: '/auth/login',
-          iconType: 'letter',
-          iconName: 'l'
-        },
-        {
-          label: 'Register',
-          routerLink: '/auth/register',
-          iconType: 'letter',
-          iconName: 're'
-        }
-      ]
     }
   ];
   ngOnInit() {

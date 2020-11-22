@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {PostService} from '../services/post.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,7 +8,24 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class DashboardComponent implements OnInit {
-  constructor() {}
+  posts;
+  scrollBarHorizontal = window.innerWidth < 960;
+  columnModeSetting = window.innerWidth < 960 ? 'standard' : 'force';
+  selected = [];
+  constructor(private postService: PostService) {}
 
   ngOnInit() {}
+
+  onActivate(event) {}
+
+  onSelect({ selected }) {
+    this.selected.splice(0, this.selected.length);
+    this.selected.push(...selected);
+  }
+
+  loadData() {
+    this.postService.getAll().subscribe(d => {
+      this.posts = d;
+    });
+  }
 }

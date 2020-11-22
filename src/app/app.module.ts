@@ -54,6 +54,7 @@ import {RootLayout} from './_pages/layouts';
 import {PublicBaseComponent} from './_pages/public/public-base/public-base.component';
 import {PublicRootLayout} from './_pages/public/public-root/public-root.component';
 import {PublicDashboardComponent} from './_pages/public/public-dashboard/public-dashboard.component';
+import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -105,7 +106,8 @@ export class AppHammerConfig extends HammerGestureConfig  {
     PerfectScrollbarModule,
     pgSwitchModule,
     QuillModule.forRoot(),
-    MessageModule
+    MessageModule,
+    NgxDatatableModule
   ],
   providers: [QuickviewService, pagesToggleService, MessageService, {
     provide: PERFECT_SCROLLBAR_CONFIG,

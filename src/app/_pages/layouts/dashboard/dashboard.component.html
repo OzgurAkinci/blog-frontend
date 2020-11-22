@@ -1,1 +1,36 @@
-<router-outlet></router-outlet>
+<pg-container>
+    <div class="col-md-6 bg-white">
+        <div class="card card-transparent">
+        <div class="card-header ">
+            <div class="card-title">Posts
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <ngx-datatable class='table table-hover' [rows]="posts" [columnMode]="columnModeSetting"
+                               [headerHeight]="43" [footerHeight]="50" [rowHeight]="'auto'" [limit]="5" [selected]="selected"
+                               [selectionType]="'checkbox'" [scrollbarH]="scrollBarHorizontal" (activate)="onActivate($event)"
+                               (select)='onSelect($event)'>
+                    <ngx-datatable-column [width]="45" [sortable]="false" [canAutoResize]="false" [draggable]="false"
+                                          [resizeable]="false" cellClass="d-flex align-items-center p-l-0 p-r-0">
+                        <ng-template ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
+                                     let-selectFn="selectFn">
+                            <button class="btn btn-sm btn-link btn-icon"><i class="pg-icon">trash_alt</i>
+                            </button>
+                        </ng-template>
+                        <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row" let-value="value"
+                                     let-isSelected="isSelected" let-onCheckboxChangeFn="onCheckboxChangeFn">
+                            <div class="form-check d-flex align-items-center justify-content-center">
+                                <input type="checkbox" value="1" id="checkbox_1{{rowIndex}}" [checked]="isSelected"
+                                       (change)="onCheckboxChangeFn($event)">
+                                <label for="checkbox_1{{rowIndex}}" class="no-padding no-margin"></label>
+                            </div>
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="postTitle" cellClass="d-flex align-items-center"></ngx-datatable-column>
+                </ngx-datatable>
+            </div>
+        </div>
+    </div>
+    </div>
+</pg-container>
