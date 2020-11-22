@@ -13,7 +13,7 @@ import { AppComponent } from './app.component';
 import { pagesToggleService } from './_pages/services/toggler.service';
 
 import { SidebarComponent } from './_pages/components/sidebar/sidebar.component';
-import { QuickviewComponent } from './_pages/components/quickview/quickview.component';
+//import { QuickviewComponent } from './_pages/components/quickview/quickview.component';
 import { QuickviewService } from './_pages/components/quickview/quickview.service';
 import { SearchOverlayComponent } from './_pages/components/search-overlay/search-overlay.component';
 import { HeaderComponent } from './_pages/components/header/header.component';
@@ -55,6 +55,7 @@ import {PublicBaseComponent} from './_pages/public/public-base/public-base.compo
 import {PublicRootLayout} from './_pages/public/public-root/public-root.component';
 import {PublicDashboardComponent} from './_pages/public/public-dashboard/public-dashboard.component';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
+import {QuickviewComponent} from './_pages/components/quickview/quickview.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -70,7 +71,8 @@ export class AppHammerConfig extends HammerGestureConfig  {
 @NgModule({
   declarations: [
     AppComponent,
-    SidebarComponent, QuickviewComponent, SearchOverlayComponent, HeaderComponent, HorizontalMenuComponent,
+    SidebarComponent, QuickviewComponent,
+    SearchOverlayComponent, HeaderComponent, HorizontalMenuComponent,
     RootLayout,
     BaseComponent,
     DashboardComponent,

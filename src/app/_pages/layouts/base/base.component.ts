@@ -13,10 +13,10 @@ export class BaseComponent extends RootLayout implements OnInit {
   menuLinks = [
     {
       label: 'Dashboard',
-      details: '12 New Updates',
+      details: '',
       routerLink: '/base/dashboard',
       iconType: 'fi',
-      iconName: 'shield'
+      iconName: 'home'
     }
   ];
   ngOnInit() {

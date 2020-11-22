@@ -14,7 +14,7 @@ export class RootLayout implements OnInit, OnDestroy {
   @ViewChild('root', { static: false }) root;
   layoutState: string;
   extraLayoutClass: string;
-  _boxed = false;
+  _boxed = true;
   _menuPin = false;
   _enableHorizontalContainer: boolean;
   _pageContainerClass = '';

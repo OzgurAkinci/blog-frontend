@@ -7,7 +7,8 @@ import {User} from '../model/user.model';
 
 const OAUTH_CLIENT = 'blog';
 const OAUTH_SECRET = 'blog';
-const API_URL = 'http://localhost:8888/blog-server/';
+//const API_URL = 'http://localhost:8888/blog-server/';
+const API_URL = 'http://185.247.139.7:8182/blog-server/';
 const HTTP_OPTIONS = {
   headers: new HttpHeaders({
     'Content-Type': 'application/x-www-form-urlencoded',
