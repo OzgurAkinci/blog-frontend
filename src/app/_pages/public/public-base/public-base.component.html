@@ -1,0 +1,90 @@
+<!-- WRAP LAYOUT IF BOXED -->
+<div class="container" *ngIf="_boxed; else basicLayoutBlock">
+  <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
+</div>
+<ng-template #basicLayoutBlock>
+  <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
+</ng-template>
+<!-- YOUR LAYOUT CONTENT GOES INSIDE HERE -->
+<ng-template #contentTpl>
+  <!-- PAGE CONTAINER -->
+  <page-container>
+    <pg-header [boxed]="_boxed">
+      <div class="d-flex align-items-center">
+        <!-- START EMAIL MOBILE TOGGLE -->
+        <a href="javascript:void(0);" class="toggle-secondary-sidebar align-items-center"
+          (click)="toggleSecondarySideBar()" *ngIf="_layoutOption === 'email'">
+          <span class="d-flex align-items-center">
+            Inbox <span class="text-info">(12)</span> <span class="pg-icon">drop_down</span>
+          </span>
+        </a>
+        <!-- END EMAIL MOBILE TOGGLE -->
+        <div class="brand" [class.d-none]="_layoutOption === 'email'" [class.d-xl-block]="_layoutOption === 'email'"
+          [class.d-lg-block]="_layoutOption === 'email'">
+          <img src="assets/img/logo_blue.png" alt="logo" pgRetina src1x="assets/img/logo_blue.png"
+            src2x="assets/img/logo_blue_2x.png" width="78" height="22">
+        </div>
+        <a href="#" class="btn btn-link text-primary m-l-20 d-none d-lg-inline-flex d-xl-inline-flex">Özgeçmişim</a>
+        <a href="#" class="btn btn-link text-primary m-l-20 d-none d-lg-inline-flex d-xl-inline-flex">İletişim</a>
+        <a href="javascript:void(0)" class="search-link d-none d-lg-block d-xl-block" (click)="openSearch($event)"><i
+            class="pg-icon">search</i>Type anywhere to <span class="bold">search</span></a>
+      </div>
+      <div class="d-flex align-items-center">
+        <!-- START NOTIFICATION LIST -->
+        <ul class="d-lg-inline-block d-none notification-list no-margin  b-grey b-l b-r no-style p-l-20 p-r-20">
+
+          <ng-template [ngIf]="_layoutOption != 'email'">
+            <li class="p-r-10 inline">
+              <a href="/base/dashboard" class="header-icon btn-icon-link">
+                <i class="pg-icon">user</i>
+              </a>
+            </li>
+          </ng-template>
+
+          <ng-template [ngIf]="_layoutOption == 'email'">
+            <li class="inline">
+              <a href="javascript:void(0)" id="mark-email" class="mark-email btn-icon-link m-l-10"><i
+                  class="pg-icon">edit</i></a>
+            </li>
+          </ng-template>
+        </ul>
+        <!-- END NOTIFICATIONS LIST -->
+        <!-- START User Info-->
+
+      </div>
+    </pg-header>
+    <div class="page-content-wrapper {{_pageContainerClass}}">
+      <!-- START PAGE CONTENT -->
+      <div class="content {{_contentClass}}">
+        <router-outlet></router-outlet>
+      </div>
+      <!-- END PAGE CONTENT -->
+      <!-- START COPYRIGHT -->
+      <ng-template [ngIf]="_footer">
+        <div class=" container-fluid container-fixed-lg footer">
+          <div class="copyright sm-text-center">
+            <p class="small no-margin pull-left sm-pull-reset">
+              <span class="hint-text">Copyright &copy; 2020</span>&nbsp;<span class="font-montserrat">ozgurakinci.com.tr</span>.
+              <span class="hint-text">All rights
+                reserved.</span> <span class="sm-block"><a class="m-l-10 m-r-10" href="javascript:void(0)">Terms of
+                  use</a> <span class="muted">|</span> <a class="m-l-10" href="javascript:void(0)">Privacy
+                  Policy</a></span>
+            </p>
+
+            <p class="small no-margin pull-right sm-pull-reset">
+              Hand-crafted <span class="hint-text">&amp; made with Love</span>
+            </p>
+
+            <div class="clearfix">
+            </div>
+          </div>
+        </div>
+        <!-- END COPYRIGHT -->
+      </ng-template>
+    </div>
+  </page-container>
+  <!-- QUICKSEARCH -->
+  <app-search-overlay></app-search-overlay>
+  <!-- QUICKVIEW -->
+  <app-quickview></app-quickview>
+</ng-template>

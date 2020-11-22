@@ -1,0 +1,6 @@
+/* You can add global styles to this file, and also import other style files */
+page-container{
+    display: block;
+    user-select: auto!important;
+    -webkit-user-drag: auto!important;
+}
