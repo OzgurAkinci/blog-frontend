@@ -4,11 +4,11 @@ import {Observable, throwError} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
 import {TokenService} from './token.service';
 import {User} from '../model/user.model';
+import {environment} from '../../environments/environment';
 
 const OAUTH_CLIENT = 'blog';
 const OAUTH_SECRET = 'blog';
-//const API_URL = 'http://localhost:8888/blog-server/';
-const API_URL = 'http://185.247.139.7:8182/blog-server/';
+
 const HTTP_OPTIONS = {
   headers: new HttpHeaders({
     'Content-Type': 'application/x-www-form-urlencoded',
@@ -50,7 +50,7 @@ export class AuthService {
       .set('password', loginData.password)
       .set('grant_type', 'password');
 
-    return this.http.post<any>(API_URL + 'oauth/token', body, HTTP_OPTIONS)
+    return this.http.post<any>(environment.apiUrl + 'oauth/token', body, HTTP_OPTIONS)
       .pipe(
         tap(res => {
           this.tokenService.saveToken(res.access_token);
@@ -66,7 +66,7 @@ export class AuthService {
     const body = new HttpParams()
       .set('refresh_token', refreshData.refresh_token)
       .set('grant_type', 'refresh_token');
-    return this.http.post<any>(API_URL + 'oauth/token', body, HTTP_OPTIONS)
+    return this.http.post<any>(environment.apiUrl + 'oauth/token', body, HTTP_OPTIONS)
       .pipe(
         tap(res => {
           this.tokenService.saveToken(res.access_token);
@@ -82,7 +82,7 @@ export class AuthService {
   }
 
   register(data: any): Observable<any> {
-    return this.http.post<any>(API_URL + 'oauth/signup', data)
+    return this.http.post<any>(environment.apiUrl + 'oauth/signup', data)
       .pipe(
         tap(_ => AuthService.log('register')),
         catchError(AuthService.handleError)
@@ -93,6 +93,6 @@ export class AuthService {
     const httpOptions = {
       headers: new HttpHeaders({})
     };
-    return this.http.get<User>(API_URL + 'user/currentUser', httpOptions);
+    return this.http.get<User>(environment.apiUrl + 'user/currentUser', httpOptions);
   }
 }
