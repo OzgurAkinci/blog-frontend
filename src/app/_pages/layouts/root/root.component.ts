@@ -15,12 +15,12 @@ export class RootLayout implements OnInit, OnDestroy {
   layoutState: string;
   extraLayoutClass: string;
   _boxed = true;
-  _menuPin = false;
+  _menuPin = true;
   _enableHorizontalContainer: boolean;
   _pageContainerClass = '';
   _contentClass = '';
   _footer = true;
-  _menuDrawerOpen = false;
+  _menuDrawerOpen = true;
   // Mobile
   _secondarySideBar = false;
   // Mobile
@@ -42,6 +42,8 @@ export class RootLayout implements OnInit, OnDestroy {
   public footer = true;
 
   constructor(public toggler: pagesToggleService, protected authService: AuthService, protected router: Router) {
+    pg.addClass(document.body, 'menu-pin');
+    this._menuPin = true;
     if (this.layoutState) {
       pg.addClass(document.body, this.layoutState);
     }
@@ -176,7 +178,7 @@ export class RootLayout implements OnInit, OnDestroy {
   /** @function toggleMenuPin
    *   @description Permanently Open / Close Main Sidebar
    */
-  toggleMenuPin($e) {
+  toggleMenuPin() {
     if (pg.isVisibleSm()) {
       this._menuPin = false;
       return;

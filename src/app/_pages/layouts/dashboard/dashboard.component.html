@@ -31,11 +31,11 @@
                         </ngx-datatable-column>
                         <ngx-datatable-column name="postTitle" cellClass="d-flex align-items-center"></ngx-datatable-column>
                         <ngx-datatable-column>
-                            <ng-template ngx-datatable-cell-template>
-                              <span>
-                                <button class="btn btn-secondary" > <i class="pg-icon">edit</i></button>
-                                <button class="btn btn-danger" class="btn" > <i class="pg-icon">trash_alt</i></button>
-                              </span>
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                  <span>
+                                    <button class="btn btn-outline-secondary" routerLink="/base/post/{{row.id}}"> <i class="pg-icon">edit</i></button> &nbsp;
+                                    <button class="btn btn-outline-danger" class="btn"> <i class="pg-icon">trash_alt</i></button>
+                                  </span>
                             </ng-template>
                         </ngx-datatable-column>
                     </ngx-datatable>
@@ -76,11 +76,11 @@
                             </ngx-datatable-column>
                             <ngx-datatable-column name="postTitle" cellClass="d-flex align-items-center"></ngx-datatable-column>
                             <ngx-datatable-column>
-                                <ng-template ngx-datatable-cell-template>
-                              <span>
-                                <button class="btn btn-secondary" > <i class="pg-icon">edit</i></button>
-                                <button class="btn btn-danger" class="btn" > <i class="pg-icon">trash_alt</i></button>
-                              </span>
+                                <ng-template let-row="row" ngx-datatable-cell-template>
+                                  <span>
+                                    <button class="btn btn-outline-secondary" routerLink="/base/post/{{row.id}}"> <i class="pg-icon">edit</i></button> &nbsp;
+                                    <button class="btn btn-outline-danger" class="btn"> <i class="pg-icon">trash_alt</i></button>
+                                  </span>
                                 </ng-template>
                             </ngx-datatable-column>
                         </ngx-datatable>
@@ -118,11 +118,11 @@
                                 </ngx-datatable-column>
                                 <ngx-datatable-column name="postTitle" cellClass="d-flex align-items-center"></ngx-datatable-column>
                                 <ngx-datatable-column>
-                                    <ng-template ngx-datatable-cell-template>
-                              <span>
-                                <button class="btn btn-secondary" > <i class="pg-icon">edit</i></button>
-                                <button class="btn btn-danger" class="btn" > <i class="pg-icon">trash_alt</i></button>
-                              </span>
+                                    <ng-template let-row="row" ngx-datatable-cell-template>
+                                      <span>
+                                        <button class="btn btn-outline-secondary" routerLink="/base/post/{{row.id}}"> <i class="pg-icon">edit</i></button> &nbsp;
+                                        <button class="btn btn-outline-danger" class="btn"> <i class="pg-icon">trash_alt</i></button>
+                                      </span>
                                     </ng-template>
                                 </ngx-datatable-column>
                             </ngx-datatable>

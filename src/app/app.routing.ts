@@ -6,6 +6,8 @@ import {
 import {BlankComponent} from './_pages/layouts/blank/blank.component';
 import {AuthGuard} from './auth/auth.guard';
 import {PublicBaseComponent, PublicDashboardComponent} from './_pages/public';
+import {PostComponent} from './_pages/layouts/post/post.component';
+import {PostEditComponent} from './_pages/layouts/post/edit/post-edit.component';
 
 export const AppRoutes: Routes = [
   { path: '',   redirectTo: '/public/dashboard', pathMatch: 'full' },
@@ -28,6 +30,14 @@ export const AppRoutes: Routes = [
       {
         path: 'dashboard',
         component: DashboardComponent
+      },
+      {
+        path: 'post',
+        component: PostComponent
+      },
+      {
+        path: 'post/:id',
+        component: PostEditComponent
       }
     ]
   },

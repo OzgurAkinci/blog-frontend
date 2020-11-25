@@ -56,6 +56,8 @@ import {PublicRootLayout} from './_pages/public/public-root/public-root.componen
 import {PublicDashboardComponent} from './_pages/public/public-dashboard/public-dashboard.component';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {QuickviewComponent} from './_pages/components/quickview/quickview.component';
+import {PostComponent} from './_pages/layouts/post/post.component';
+import {PostEditComponent} from './_pages/layouts/post/edit/post-edit.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -79,14 +81,15 @@ export class AppHammerConfig extends HammerGestureConfig  {
     BlankComponent,
     PublicBaseComponent,
     PublicRootLayout,
-    PublicDashboardComponent
+    PublicDashboardComponent,
+    PostComponent,
+    PostEditComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     CommonModule,
     FormsModule,
-    HttpModule,
     HttpClientModule,
     SharedModule,
     ProgressModule,

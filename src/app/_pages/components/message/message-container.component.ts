@@ -34,9 +34,9 @@ export class MessageContainerComponent {
 
   // Create a new message
   createMessage(message: MessageDataFilled): void {
-    let el = window.document.querySelector('.header ');
+    const el = window.document.querySelector('.header ');
     if (el) {
-      let rect = el.getBoundingClientRect();
+      const rect = el.getBoundingClientRect();
       this.style = {
         marginTop: rect.height + 'px'
       };

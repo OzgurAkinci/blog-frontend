@@ -4,3 +4,7 @@ page-container{
     user-select: auto!important;
     -webkit-user-drag: auto!important;
 }
+
+.container-fluid.container-fixed-lg {
+    width: 100% !important;
+}

@@ -15,15 +15,21 @@ export class BaseComponent extends RootLayout implements OnInit {
       label: 'Dashboard',
       details: '',
       routerLink: '/base/dashboard',
-      iconType: 'fi',
+      iconType: 'pg',
       iconName: 'home'
+    },
+    {
+      label: 'Posts',
+      details: '',
+      routerLink: '/base/post',
+      iconType: 'pg',
+      iconName: 'brush'
     }
   ];
   ngOnInit() {
     this.authService.getCurrentUser()
         .subscribe((data: User) => {
           this.user = data;
-          console.log(data);
         });
   }
   logout(): void {

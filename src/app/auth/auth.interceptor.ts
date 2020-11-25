@@ -40,14 +40,16 @@ export class AuthInterceptor implements HttpInterceptor {
       headers: request.headers.set('Accept', 'application/json')
     });
 
+/*
     const secureReq = request.clone({
       url: request.url.replace('https://', 'http://')
     });
+*/
 
-    return next.handle(secureReq).pipe(
+    return next.handle(request).pipe(
       map((event: HttpEvent<any>) => {
         if (event instanceof HttpResponse) {
-          console.log('event--->>>', event);
+          //console.log('event--->>>', event);
         }
         return event;
       }),
