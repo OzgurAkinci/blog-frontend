@@ -1,25 +1,24 @@
 import {AfterViewInit, Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
-import {PostService} from '../../services/post.service';
-import {Post} from '../../../../model/post.model';
 import {Subscription} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
 import { Router } from '@angular/router';
 import {MessageService} from '../../../components/message/message.service';
+import {Tag} from '../../../../model/tag.model';
+import {TagService} from '../../services/tag.service';
 
 @Component({
   selector: 'app-post-edit',
-  templateUrl: './post-edit.component.html',
-  styleUrls: ['./post-edit.component.scss'],
+  templateUrl: './tag-edit.component.html',
+  styleUrls: ['./tag-edit.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class PostEditComponent implements OnInit, AfterViewInit {
-  post: Post = new Post();
+export class TagEditComponent implements OnInit, AfterViewInit {
+  tag: Tag = new Tag();
   sub: Subscription;
-  quill: any;
 
   public customOption: any = {};
 
-  constructor(private postService: PostService, private route: ActivatedRoute, private router: Router,
+  constructor(private tagService: TagService, private route: ActivatedRoute, private router: Router,
               private _notification: MessageService) {}
 
   ngOnInit() {
@@ -29,7 +28,7 @@ export class PostEditComponent implements OnInit, AfterViewInit {
         if (!isNaN(id)) {
           this.loadData(id);
         } else {
-          this.post = new Post();
+          this.tag = new Tag();
         }
       }
     });
@@ -40,14 +39,14 @@ export class PostEditComponent implements OnInit, AfterViewInit {
   }
 
   loadData(id: number) {
-    this.postService.get(id).subscribe(data => {
-      this.post = data;
+    this.tagService.get(id).subscribe(data => {
+      this.tag = data;
     });
   }
 
   save() {
-    this.postService.save(this.post).subscribe(data => {
-      this.post = data;
+    this.tagService.save(this.tag).subscribe(data => {
+      this.tag = data;
       this._notification.create(
           'success',
           'Successfully Saved',
@@ -71,8 +70,8 @@ export class PostEditComponent implements OnInit, AfterViewInit {
   }
 
   delete(id: number) {
-    this.postService.delete(id).subscribe(data => {
-      this.router.navigate(['/base/post']);
+    this.tagService.delete(id).subscribe(data => {
+      this.router.navigate(['/base/tag']);
     });
   }
 

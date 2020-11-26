@@ -1,0 +1,42 @@
+<pg-container>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-transparent bg-white">
+                <div class="card-header ">
+                    <div class="card-title">Post
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form class="" role="form">
+                        <div class="form-group form-group-default required " pgFormGroupDefault>
+                            <label>Post Title</label>
+                            <input [(ngModel)]="tag.tagName" name="postTitle" class="form-control" required>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="btn-group btn-toolbar">
+                <button aria-label="" type="button" routerLink="/base/post" class="btn btn-default">
+                    <div class="p-t-5 p-b-5">
+                        <i class="pg-icon">arrow_left</i>
+                        <div class="fs-11 font-montserrat text-uppercase">Back</div>
+                    </div>
+                </button>
+                <button aria-label="" type="button" (click)="delete(tag.id)" class="btn btn-default">
+                    <div class="p-t-5 p-b-5">
+                        <i class="pg-icon">trash</i>
+                        <div class="fs-11 font-montserrat text-uppercase">Delete</div>
+                    </div>
+                </button>
+                <button aria-label="" type="button" (click)="save()" class="btn btn-default">
+                    <div class="p-t-5 p-b-5">
+                        <i class="pg-icon">tick</i>
+                        <div class="fs-11 font-montserrat text-uppercase">Save</div>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+</pg-container>

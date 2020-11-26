@@ -58,6 +58,11 @@ import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {QuickviewComponent} from './_pages/components/quickview/quickview.component';
 import {PostComponent} from './_pages/layouts/post/post.component';
 import {PostEditComponent} from './_pages/layouts/post/edit/post-edit.component';
+import {FileBrowserModule} from './_pages/components/file-browser/file-browser.module';
+import {CategoryComponent} from './_pages/layouts/category/category.component';
+import {CategoryEditComponent} from './_pages/layouts/category/edit/category-edit.component';
+import {TagEditComponent} from './_pages/layouts/tag/edit/tag-edit.component';
+import {TagComponent} from './_pages/layouts/tag/tag.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -83,7 +88,11 @@ export class AppHammerConfig extends HammerGestureConfig  {
     PublicRootLayout,
     PublicDashboardComponent,
     PostComponent,
-    PostEditComponent
+    PostEditComponent,
+    CategoryComponent,
+    CategoryEditComponent,
+    TagComponent,
+    TagEditComponent
   ],
   imports: [
     BrowserModule,
@@ -112,7 +121,8 @@ export class AppHammerConfig extends HammerGestureConfig  {
     pgSwitchModule,
     QuillModule.forRoot(),
     MessageModule,
-    NgxDatatableModule
+    NgxDatatableModule,
+    FileBrowserModule
   ],
   providers: [QuickviewService, pagesToggleService, MessageService, {
     provide: PERFECT_SCROLLBAR_CONFIG,

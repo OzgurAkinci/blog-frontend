@@ -19,9 +19,23 @@ export class BaseComponent extends RootLayout implements OnInit {
       iconName: 'home'
     },
     {
-      label: 'Posts',
+      label: 'Post',
       details: '',
       routerLink: '/base/post',
+      iconType: 'pg',
+      iconName: 'brush'
+    },
+    {
+      label: 'Category',
+      details: '',
+      routerLink: '/base/category',
+      iconType: 'pg',
+      iconName: 'brush'
+    },
+    {
+      label: 'Tag',
+      details: '',
+      routerLink: '/base/tag',
       iconType: 'pg',
       iconName: 'brush'
     }

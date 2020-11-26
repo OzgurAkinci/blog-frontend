@@ -4,12 +4,12 @@
             <div class="card card-transparent bg-white">
             <div class="card-header ">
                 <div class="card-title">
-                    <i class="pg-icon">edit</i> Posts
+                    <i class="pg-icon">edit</i> Tag
                 </div>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <ngx-datatable class='table table-hover' [rows]="posts" [columnMode]="columnModeSetting"
+                    <ngx-datatable class='table table-hover' [rows]="tags" [columnMode]="columnModeSetting"
                                    [headerHeight]="43" [footerHeight]="50" [rowHeight]="'auto'" [limit]="5" [selected]="selected"
                                    [selectionType]="'checkbox'" [scrollbarH]="scrollBarHorizontal" (activate)="onActivate($event)"
                                    (select)='onSelect($event)'>
@@ -30,11 +30,11 @@
                                 </div>
                             </ng-template>
                         </ngx-datatable-column>
-                        <ngx-datatable-column name="postTitle" cellClass="d-flex align-items-center"></ngx-datatable-column>
+                        <ngx-datatable-column name="tagName" cellClass="d-flex align-items-center"></ngx-datatable-column>
                         <ngx-datatable-column>
                             <ng-template let-row="row" ngx-datatable-cell-template>
                               <span>
-                                <button class="btn btn-outline-secondary" routerLink="/base/post/{{row.id}}"> <i class="pg-icon">edit</i></button> &nbsp;
+                                <button class="btn btn-outline-secondary" routerLink="/base/tag/{{row.id}}"> <i class="pg-icon">edit</i></button> &nbsp;
                                 <button class="btn btn-outline-danger" class="btn"> <i class="pg-icon">trash_alt</i></button>
                               </span>
                             </ng-template>

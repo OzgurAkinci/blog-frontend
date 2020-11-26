@@ -4,7 +4,39 @@ page-container{
     user-select: auto!important;
     -webkit-user-drag: auto!important;
 }
+/*
 
 .container-fluid.container-fixed-lg {
     width: 100% !important;
+}
+*/
+body.menu-pin .page-container .page-content-wrapper .content {
+    padding-left: 10px!important;
+    padding-right: 10px!important;
+    margin-top: 10px!important;
+}
+.header {
+    background-color: #d3b998!important;
+}
+.header a{
+    color:#25262a!important;
+}
+.page-sidebar .sidebar-menu .menu-items > li {
+    border-bottom: 1px solid #e7e7e7!important;
+}
+
+.page-sidebar .sidebar-menu .menu-items > li:hover {
+    background-color: #d3b998;
+    -webkit-transition: background-color 1000ms linear;
+    -ms-transition: background-color 1000ms linear;
+    transition: background-color 1000ms linear;
+}
+
+.card-header {
+    background-color: #d3b998!important;
+    color:#fff!important;
+    margin-bottom: 10px!important;
+}
+.card {
+    margin-bottom:20px!important;
 }

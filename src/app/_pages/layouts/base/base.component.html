@@ -45,10 +45,10 @@
             src2x="assets/img/logo_blue_2x.png" width="78" height="22">
         </div>
         <a routerLink="/base/post/new" class="btn btn-link text-primary m-l-20 d-none d-lg-inline-flex d-xl-inline-flex">New Post <i class="pg-icon">plus</i></a>
-        <a href="#" class="btn btn-link text-primary m-l-20 d-none d-lg-inline-flex d-xl-inline-flex">New Category <i class="pg-icon">plus</i></a>
-        <a href="#" class="btn btn-link text-primary m-l-20 d-none d-lg-inline-flex d-xl-inline-flex">New Tag <i class="pg-icon">plus</i></a>
-        <a href="javascript:void(0)" class="search-link d-none d-lg-block d-xl-block" (click)="openSearch($event)"><i
-            class="pg-icon">search</i>Type anywhere to <span class="bold">search</span></a>
+        <a routerLink="/base/category/new" class="btn btn-link text-primary m-l-20 d-none d-lg-inline-flex d-xl-inline-flex">New Category <i class="pg-icon">plus</i></a>
+        <a routerLink="/base/tag/new" class="btn btn-link text-primary m-l-20 d-none d-lg-inline-flex d-xl-inline-flex">New Tag <i class="pg-icon">plus</i></a>
+    <!--    <a href="javascript:void(0)" class="search-link d-none d-lg-block d-xl-block" (click)="openSearch($event)"><i
+            class="pg-icon">search</i>Type anywhere to <span class="bold">search</span></a>-->
       </div>
       <div class="d-flex align-items-center">
         <!-- START NOTIFICATION LIST -->
@@ -82,9 +82,9 @@
             </span>
           </button>
           <div class="dropdown-menu dropdown-menu-right profile-dropdown" *dropdownMenu role="menu">
-            <a href="#" class="dropdown-item"><span>Signed in as <br /><b>{{user?.username}}</b></span></a>
+            <a class="dropdown-item"><span>Signed in as <br /><b>{{user?.username}}</b></span></a>
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item" (click)="logout()">Logout</a>
+            <a class="dropdown-item" (click)="logout()">Logout</a>
           </div>
         </div>
       </div>

@@ -1,25 +1,23 @@
 import {AfterViewInit, Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
-import {PostService} from '../../services/post.service';
-import {Post} from '../../../../model/post.model';
 import {Subscription} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
 import { Router } from '@angular/router';
 import {MessageService} from '../../../components/message/message.service';
+import {CategoryService} from '../../services/category.service';
+import {Category} from '../../../../model/category.model';
 
 @Component({
-  selector: 'app-post-edit',
-  templateUrl: './post-edit.component.html',
-  styleUrls: ['./post-edit.component.scss'],
+  selector: 'app-category-edit',
+  templateUrl: './category-edit.component.html',
+  styleUrls: ['./category-edit.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class PostEditComponent implements OnInit, AfterViewInit {
-  post: Post = new Post();
+export class CategoryEditComponent implements OnInit, AfterViewInit {
+  category: Category = new Category();
   sub: Subscription;
-  quill: any;
-
   public customOption: any = {};
 
-  constructor(private postService: PostService, private route: ActivatedRoute, private router: Router,
+  constructor(private categoryService: CategoryService, private route: ActivatedRoute, private router: Router,
               private _notification: MessageService) {}
 
   ngOnInit() {
@@ -29,7 +27,7 @@ export class PostEditComponent implements OnInit, AfterViewInit {
         if (!isNaN(id)) {
           this.loadData(id);
         } else {
-          this.post = new Post();
+          this.category = new Category();
         }
       }
     });
@@ -40,14 +38,14 @@ export class PostEditComponent implements OnInit, AfterViewInit {
   }
 
   loadData(id: number) {
-    this.postService.get(id).subscribe(data => {
-      this.post = data;
+    this.categoryService.get(id).subscribe(data => {
+      this.category = data;
     });
   }
 
   save() {
-    this.postService.save(this.post).subscribe(data => {
-      this.post = data;
+    this.categoryService.save(this.category).subscribe(data => {
+      this.category = data;
       this._notification.create(
           'success',
           'Successfully Saved',
@@ -71,8 +69,8 @@ export class PostEditComponent implements OnInit, AfterViewInit {
   }
 
   delete(id: number) {
-    this.postService.delete(id).subscribe(data => {
-      this.router.navigate(['/base/post']);
+    this.categoryService.delete(id).subscribe(data => {
+      this.router.navigate(['/base/category']);
     });
   }
 
