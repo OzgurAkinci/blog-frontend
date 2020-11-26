@@ -23,4 +23,8 @@ export class PostService {
     delete(id: number) {
         return this.http.delete(environment.apiUrl + 'post/delete/' + id);
     }
+
+    getTotalCount(): any {
+        return this.http.get<any>(environment.apiUrl + 'post/getTotalCount');
+    }
 }

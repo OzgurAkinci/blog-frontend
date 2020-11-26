@@ -23,4 +23,8 @@ export class CategoryService {
     delete(id: number) {
         return this.http.delete(environment.apiUrl + 'category/delete/' + id);
     }
+
+    getTotalCount(): any {
+        return this.http.get<any>(environment.apiUrl + 'category/getTotalCount');
+    }
 }

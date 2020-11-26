@@ -23,4 +23,8 @@ export class TagService {
     delete(id: number) {
         return this.http.delete(environment.apiUrl + 'tag/delete/' + id);
     }
+
+    getTotalCount(): any {
+        return this.http.get<any>(environment.apiUrl + 'tag/getTotalCount');
+    }
 }

@@ -1,138 +1,96 @@
 <pg-container>
     <div class="row">
-        <div class="col-md-8">
-            <div class="card card-transparent bg-white">
-            <div class="card-header ">
-                <div class="card-title">
-                    <i class="pg-icon">edit</i> Post
+        <div class="col-md-4">
+            <pgcard TimeOut="3000" AdditionalClasses="card no-border widget-loader-bar m-b-10"
+                    Maximize="false" Toggle="false" Close="false" Controls="false"  ProgressType="bar"
+                    BodyClass="no-padding" HeaderClass="top-left top-right">
+                <ng-template #CardTitle>
+				<span class="font-montserrat fs-11 all-caps">
+					Post
+					<i class="fa fa-chevron-right"></i>
+				</span>
+                </ng-template>
+                <div class="container-xs-height full-height">
+                    <div class="row-xs-height">
+                        <div class="col-xs-height col-top">
+                            <div class="p-l-20 p-t-50 p-b-40 p-r-20">
+                                <h3 class="no-margin p-b-5">{{totalPostCount}}</h3>
+                                <span class="small hint-text pull-left">post count</span>
+                                <span class="pull-right small text-primary">{{totalPostCount}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-xs-height">
+                        <div class="col-xs-height col-bottom">
+                            <div class="progress progress-small m-b-0">
+                                <div class="progress-bar progress-bar-primary" style="width:71%"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <ngx-datatable class='table table-hover' [rows]="posts" [columnMode]="columnModeSetting"
-                                   [headerHeight]="43" [footerHeight]="50" [rowHeight]="'auto'" [limit]="5" [selected]="selected"
-                                   [selectionType]="'checkbox'" [scrollbarH]="scrollBarHorizontal" (activate)="onActivate($event)"
-                                   (select)='onSelect($event)'>
-                        <ngx-datatable-column [width]="45" [sortable]="false" [canAutoResize]="false" [draggable]="false"
-                                              [resizeable]="false" cellClass="d-flex align-items-center p-l-0 p-r-0">
-                            <ng-template ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
-                                         let-selectFn="selectFn">
-                                <button class="btn btn-sm btn-link btn-icon">
-                                    <i class="pg-icon">trash_alt</i>
-                                </button>
-                            </ng-template>
-                            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row" let-value="value"
-                                         let-isSelected="isSelected" let-onCheckboxChangeFn="onCheckboxChangeFn">
-                                <div class="form-check d-flex align-items-center justify-content-center">
-                                    <input type="checkbox" value="1" id="checkbox_1{{rowIndex}}" [checked]="isSelected"
-                                           (change)="onCheckboxChangeFn($event)">
-                                    <label for="checkbox_1{{rowIndex}}" class="no-padding no-margin"></label>
-                                </div>
-                            </ng-template>
-                        </ngx-datatable-column>
-                        <ngx-datatable-column name="postTitle" cellClass="d-flex align-items-center"></ngx-datatable-column>
-                        <ngx-datatable-column>
-                            <ng-template let-row="row" ngx-datatable-cell-template>
-                                  <span>
-                                    <button class="btn btn-outline-secondary" routerLink="/base/post/{{row.id}}"> <i class="pg-icon">edit</i></button> &nbsp;
-                                    <button class="btn btn-outline-danger" class="btn"> <i class="pg-icon">trash_alt</i></button>
-                                  </span>
-                            </ng-template>
-                        </ngx-datatable-column>
-                    </ngx-datatable>
-                </div>
-            </div>
+            </pgcard>
         </div>
-        </div>
-
 
         <div class="col-md-4">
-            <div class="col-md-12">
-                <div class="card card-transparent bg-white">
-                <div class="card-header">
-                    <div class="card-title">
-                        <i class="pg-icon">edit</i> Category
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <ngx-datatable class='table table-hover' [rows]="posts" [columnMode]="columnModeSetting"
-                                       [headerHeight]="43" [footerHeight]="50" [rowHeight]="'auto'" [limit]="5" [selected]="selected"
-                                       [selectionType]="'checkbox'" [scrollbarH]="scrollBarHorizontal" (activate)="onActivate($event)"
-                                       (select)='onSelect($event)'>
-                            <ngx-datatable-column [width]="45" [sortable]="false" [canAutoResize]="false" [draggable]="false"
-                                                  [resizeable]="false" cellClass="d-flex align-items-center p-l-0 p-r-0">
-                                <ng-template ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
-                                             let-selectFn="selectFn">
-                                    <button class="btn btn-sm btn-link btn-icon"><i class="pg-icon">trash_alt</i>
-                                    </button>
-                                </ng-template>
-                                <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row" let-value="value"
-                                             let-isSelected="isSelected" let-onCheckboxChangeFn="onCheckboxChangeFn">
-                                    <div class="form-check d-flex align-items-center justify-content-center">
-                                        <input type="checkbox" value="1" id="checkbox_2{{rowIndex}}" [checked]="isSelected"
-                                               (change)="onCheckboxChangeFn($event)">
-                                        <label for="checkbox_1{{rowIndex}}" class="no-padding no-margin"></label>
-                                    </div>
-                                </ng-template>
-                            </ngx-datatable-column>
-                            <ngx-datatable-column name="postTitle" cellClass="d-flex align-items-center"></ngx-datatable-column>
-                            <ngx-datatable-column>
-                                <ng-template let-row="row" ngx-datatable-cell-template>
-                                  <span>
-                                    <button class="btn btn-outline-secondary" routerLink="/base/post/{{row.id}}"> <i class="pg-icon">edit</i></button> &nbsp;
-                                    <button class="btn btn-outline-danger" class="btn"> <i class="pg-icon">trash_alt</i></button>
-                                  </span>
-                                </ng-template>
-                            </ngx-datatable-column>
-                        </ngx-datatable>
-                    </div>
-                </div>
-            </div>
-            </div>
-            <div class="col-md-12">
-                <div class="card card-transparent bg-white">
-                    <div class="card-header">
-                        <div class="card-title">
-                            <i class="pg-icon">edit</i> Tag
+            <pgcard TimeOut="3000" AdditionalClasses="card no-border widget-loader-bar m-b-10"
+                    Maximize="false" Toggle="false" Close="false" Controls="false"  ProgressType="bar"
+                    BodyClass="no-padding" HeaderClass="top-left top-right">
+                <ng-template #CardTitle>
+				<span class="font-montserrat fs-11 all-caps">
+					Category
+					<i class="fa fa-chevron-right"></i>
+				</span>
+                </ng-template>
+                <div class="container-xs-height full-height">
+                    <div class="row-xs-height">
+                        <div class="col-xs-height col-top">
+                            <div class="p-l-20 p-t-50 p-b-40 p-r-20">
+                                <h3 class="no-margin p-b-5">{{totalCategoryCount}}</h3>
+                                <span class="small hint-text pull-left">category count</span>
+                                <span class="pull-right small text-primary">{{totalCategoryCount}}</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <ngx-datatable class='table table-hover' [rows]="posts" [columnMode]="columnModeSetting"
-                                           [headerHeight]="43" [footerHeight]="50" [rowHeight]="'auto'" [limit]="5" [selected]="selected"
-                                           [selectionType]="'checkbox'" [scrollbarH]="scrollBarHorizontal" (activate)="onActivate($event)"
-                                           (select)='onSelect($event)'>
-                                <ngx-datatable-column [width]="45" [sortable]="false" [canAutoResize]="false" [draggable]="false"
-                                                      [resizeable]="false" cellClass="d-flex align-items-center p-l-0 p-r-0">
-                                    <ng-template ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
-                                                 let-selectFn="selectFn">
-                                        <button class="btn btn-sm btn-link btn-icon"><i class="pg-icon">trash_alt</i>
-                                        </button>
-                                    </ng-template>
-                                    <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row" let-value="value"
-                                                 let-isSelected="isSelected" let-onCheckboxChangeFn="onCheckboxChangeFn">
-                                        <div class="form-check d-flex align-items-center justify-content-center">
-                                            <input type="checkbox" value="1" id="checkbox_3{{rowIndex}}" [checked]="isSelected"
-                                                   (change)="onCheckboxChangeFn($event)">
-                                            <label for="checkbox_1{{rowIndex}}" class="no-padding no-margin"></label>
-                                        </div>
-                                    </ng-template>
-                                </ngx-datatable-column>
-                                <ngx-datatable-column name="postTitle" cellClass="d-flex align-items-center"></ngx-datatable-column>
-                                <ngx-datatable-column>
-                                    <ng-template let-row="row" ngx-datatable-cell-template>
-                                      <span>
-                                        <button class="btn btn-outline-secondary" routerLink="/base/post/{{row.id}}"> <i class="pg-icon">edit</i></button> &nbsp;
-                                        <button class="btn btn-outline-danger" class="btn"> <i class="pg-icon">trash_alt</i></button>
-                                      </span>
-                                    </ng-template>
-                                </ngx-datatable-column>
-                            </ngx-datatable>
+                    <div class="row-xs-height">
+                        <div class="col-xs-height col-bottom">
+                            <div class="progress progress-small m-b-0">
+                                <div class="progress-bar progress-bar-primary" style="width:71%"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </pgcard>
+        </div>
+
+        <div class="col-md-4">
+            <pgcard TimeOut="3000" AdditionalClasses="card no-border widget-loader-bar m-b-10"
+                    Maximize="false" Toggle="false" Close="false" Controls="false"  ProgressType="bar"
+                    BodyClass="no-padding" HeaderClass="top-left top-right">
+                <ng-template #CardTitle>
+				<span class="font-montserrat fs-11 all-caps">
+					Tag
+					<i class="fa fa-chevron-right"></i>
+				</span>
+                </ng-template>
+                <div class="container-xs-height full-height">
+                    <div class="row-xs-height">
+                        <div class="col-xs-height col-top">
+                            <div class="p-l-20 p-t-50 p-b-40 p-r-20">
+                                <h3 class="no-margin p-b-5">{{totalTagCount}}</h3>
+                                <span class="small hint-text pull-left">tag count</span>
+                                <span class="pull-right small text-primary">{{totalTagCount}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-xs-height">
+                        <div class="col-xs-height col-bottom">
+                            <div class="progress progress-small m-b-0">
+                                <div class="progress-bar progress-bar-primary" style="width:71%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </pgcard>
         </div>
     </div>
 </pg-container>
