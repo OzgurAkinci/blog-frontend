@@ -1,43 +1,126 @@
 <pg-container>
     <div class="row">
-        <div class="col-md-12">
-            <div class="card card-transparent bg-white">
-                <div class="card-header ">
-                    <div class="card-title">Post
-                    </div>
-                </div>
-                <div class="card-body">
-                    <form class="" role="form">
-                        <div class="form-group form-group-default required " pgFormGroupDefault>
-                            <label>Post Title</label>
-                            <input [(ngModel)]="post.postTitle" name="postTitle" class="form-control" required>
+        <div class="col-md-8">
+            <div class="col-md-12">
+                <div class="card card-transparent bg-white">
+                    <div class="card-header ">
+                        <div class="card-title">
+                            <i class="pg-icon">edit</i> Post
                         </div>
-                        <quill-editor [(ngModel)]="post.postDetail" name="postDetail" [styles]="{height: '350px'}" placeholder=""></quill-editor>
-                    </form>
+                    </div>
+                    <div class="card-body">
+                        <form class="" role="form">
+                            <div class="form-group form-group-default required " pgFormGroupDefault>
+                                <label>Post Title</label>
+                                <input [(ngModel)]="post.postTitle" name="postTitle" class="form-control" required>
+                            </div>
+                            <quill-editor [(ngModel)]="post.postDetail" name="postDetail" [styles]="{height: '350px'}" placeholder=""></quill-editor>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="btn-group btn-toolbar">
+                    <button aria-label="" type="button" routerLink="/base/post" class="btn btn-default">
+                        <div class="p-t-5 p-b-5">
+                            <i class="pg-icon">arrow_left</i>
+                            <div class="fs-11 font-montserrat text-uppercase">Back</div>
+                        </div>
+                    </button>
+                    <button aria-label="" type="button" (click)="delete(post.id)" class="btn btn-default">
+                        <div class="p-t-5 p-b-5">
+                            <i class="pg-icon">trash</i>
+                            <div class="fs-11 font-montserrat text-uppercase">Delete</div>
+                        </div>
+                    </button>
+                    <button aria-label="" type="button" (click)="save()" class="btn btn-default">
+                        <div class="p-t-5 p-b-5">
+                            <i class="pg-icon">tick</i>
+                            <div class="fs-11 font-montserrat text-uppercase">Save</div>
+                        </div>
+                    </button>
                 </div>
             </div>
         </div>
-        <div class="col-md-12">
-            <div class="btn-group btn-toolbar">
-                <button aria-label="" type="button" routerLink="/base/post" class="btn btn-default">
-                    <div class="p-t-5 p-b-5">
-                        <i class="pg-icon">arrow_left</i>
-                        <div class="fs-11 font-montserrat text-uppercase">Back</div>
+        <div class="col-md-4">
+            <div class="col-md-12">
+                <div class="card card-transparent bg-white">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <i class="pg-icon">edit</i> Category
+                        </div>
+                        <button routerLink="/base/category/new" class="btn btn-default btn-rounded pull-right">Add</button>
                     </div>
-                </button>
-                <button aria-label="" type="button" (click)="delete(post.id)" class="btn btn-default">
-                    <div class="p-t-5 p-b-5">
-                        <i class="pg-icon">trash</i>
-                        <div class="fs-11 font-montserrat text-uppercase">Delete</div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <ngx-datatable class='table table-hover' [rows]="categories" [columnMode]="'force'"
+                                           [headerHeight]="43" [footerHeight]="50" [rowHeight]="'auto'" [selected]="post.categories"
+                                           [selectionType]="'checkbox'" [scrollbarH]="scrollBarHorizontal" (activate)="onActivateCategory($event)"
+                                           (select)='onSelectCategory($event)'>
+
+                                <ngx-datatable-column [width]="45" [sortable]="false" [canAutoResize]="false" [draggable]="false"
+                                                      [resizeable]="false" cellClass="d-flex align-items-center p-l-0 p-r-0">
+                                    <ng-template ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
+                                                 let-selectFn="selectFn">
+                                        <button class="btn btn-sm btn-link btn-icon">
+                                            <i class="pg-icon">trash_alt</i>
+                                        </button>
+                                    </ng-template>
+                                    <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row" let-value="value"
+                                                 let-isSelected="isSelected" let-onCheckboxChangeFn="onCheckboxChangeFn">
+                                        <div class="form-check d-flex align-items-center justify-content-center">
+                                            <input type="checkbox" id="checkbox_1{{rowIndex}}" [checked]="isSelected"
+                                                   (change)="onCheckboxChangeFn($event)">
+                                            <label for="checkbox_1{{rowIndex}}" class="no-padding no-margin"></label>
+                                        </div>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="categoryName" cellClass="d-flex align-items-center"></ngx-datatable-column>
+                            </ngx-datatable>
+                        </div>
                     </div>
-                </button>
-                <button aria-label="" type="button" (click)="save()" class="btn btn-default">
-                    <div class="p-t-5 p-b-5">
-                        <i class="pg-icon">tick</i>
-                        <div class="fs-11 font-montserrat text-uppercase">Save</div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="card card-transparent bg-white">
+                    <div class="card-header ">
+                        <div class="card-title">
+                            <i class="pg-icon">edit</i> Tag
+                        </div>
+                        <button routerLink="/base/tag/new" class="btn btn-default btn-rounded pull-right">Add</button>
+
                     </div>
-                </button>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <ngx-datatable class='table table-hover' [rows]="tags" [columnMode]="columnModeSetting"
+                                           [headerHeight]="43" [footerHeight]="50" [rowHeight]="'auto'" [limit]="5" [selected]="selectedTag"
+                                           [selectionType]="'checkbox'" [scrollbarH]="scrollBarHorizontal" (activate)="onActivateTag($event)"
+                                           (select)='onSelectTag($event)'>
+                                <ngx-datatable-column [width]="45" [sortable]="false" [canAutoResize]="false" [draggable]="false"
+                                                      [resizeable]="false" cellClass="d-flex align-items-center p-l-0 p-r-0">
+                                    <ng-template ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
+                                                 let-selectFn="selectFn">
+                                        <button class="btn btn-sm btn-link btn-icon">
+                                            <i class="pg-icon">trash_alt</i>
+                                        </button>
+                                    </ng-template>
+                                    <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row" let-value="value"
+                                                 let-isSelected="isSelected" let-onCheckboxChangeFn="onCheckboxChangeFn">
+                                        <div class="form-check d-flex align-items-center justify-content-center">
+                                            <input type="checkbox" value="1" id="checkbox_2{{rowIndex}}" [checked]="isSelected"
+                                                   (change)="onCheckboxChangeFn($event)">
+                                            <label for="checkbox_2{{rowIndex}}" class="no-padding no-margin"></label>
+                                        </div>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="tagName" cellClass="d-flex align-items-center"></ngx-datatable-column>
+                            </ngx-datatable>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
     </div>
 </pg-container>

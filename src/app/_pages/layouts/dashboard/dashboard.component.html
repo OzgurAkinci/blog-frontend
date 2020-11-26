@@ -7,7 +7,6 @@
                 <ng-template #CardTitle>
 				<span class="font-montserrat fs-11 all-caps">
 					Post
-					<i class="fa fa-chevron-right"></i>
 				</span>
                 </ng-template>
                 <div class="container-xs-height full-height">
@@ -17,13 +16,6 @@
                                 <h3 class="no-margin p-b-5">{{totalPostCount}}</h3>
                                 <span class="small hint-text pull-left">post count</span>
                                 <span class="pull-right small text-primary">{{totalPostCount}}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row-xs-height">
-                        <div class="col-xs-height col-bottom">
-                            <div class="progress progress-small m-b-0">
-                                <div class="progress-bar progress-bar-primary" style="width:71%"></div>
                             </div>
                         </div>
                     </div>
@@ -51,13 +43,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row-xs-height">
-                        <div class="col-xs-height col-bottom">
-                            <div class="progress progress-small m-b-0">
-                                <div class="progress-bar progress-bar-primary" style="width:71%"></div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </pgcard>
         </div>
@@ -82,10 +67,27 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </pgcard>
+        </div>
+
+        <div class="col-md-4">
+            <pgcard TimeOut="3000" AdditionalClasses="card no-border widget-loader-bar m-b-10"
+                    Maximize="false" Toggle="false" Close="false" Controls="false"  ProgressType="bar"
+                    BodyClass="no-padding" HeaderClass="top-left top-right">
+                <ng-template #CardTitle>
+				<span class="font-montserrat fs-11 all-caps">
+					Page
+					<i class="fa fa-chevron-right"></i>
+				</span>
+                </ng-template>
+                <div class="container-xs-height full-height">
                     <div class="row-xs-height">
-                        <div class="col-xs-height col-bottom">
-                            <div class="progress progress-small m-b-0">
-                                <div class="progress-bar progress-bar-primary" style="width:71%"></div>
+                        <div class="col-xs-height col-top">
+                            <div class="p-l-20 p-t-50 p-b-40 p-r-20">
+                                <h3 class="no-margin p-b-5">{{totalPostCount}}</h3>
+                                <span class="small hint-text pull-left">post count</span>
+                                <span class="pull-right small text-primary">{{totalPostCount}}</span>
                             </div>
                         </div>
                     </div>

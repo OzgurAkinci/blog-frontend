@@ -16,27 +16,43 @@ body.menu-pin .page-container .page-content-wrapper .content {
     margin-top: 10px!important;
 }
 .header {
-    background-color: #d3b998!important;
+    background-color: #676767!important;
 }
 .header a{
-    color:#25262a!important;
+    color:#fffaf6!important;
+}
+
+.header span {
+    color:#fffaf6!important;
 }
 .page-sidebar .sidebar-menu .menu-items > li {
     border-bottom: 1px solid #e7e7e7!important;
 }
 
 .page-sidebar .sidebar-menu .menu-items > li:hover {
-    background-color: #d3b998;
+    background-color: #676767;
     -webkit-transition: background-color 1000ms linear;
     -ms-transition: background-color 1000ms linear;
     transition: background-color 1000ms linear;
 }
 
 .card-header {
-    background-color: #d3b998!important;
+    background-color: #676767!important;
     color:#fff!important;
     margin-bottom: 10px!important;
 }
 .card {
     margin-bottom:20px!important;
+}
+
+.dropdown-menu > li, .dropdown-menu > .dropdown-item, .dropdown-menu > li, .dropdown-menu > .dropdown-item > span{
+    color:#333333!important;
+}
+
+a {
+    cursor:pointer!important;
+}
+
+.menu-items > li{
+    cursor:pointer!important;
 }

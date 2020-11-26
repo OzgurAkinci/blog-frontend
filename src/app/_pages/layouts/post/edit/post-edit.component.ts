@@ -5,6 +5,10 @@ import {Subscription} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
 import { Router } from '@angular/router';
 import {MessageService} from '../../../components/message/message.service';
+import {Category} from '../../../../model/category.model';
+import {CategoryService} from '../../services/category.service';
+import {Tag} from '../../../../model/tag.model';
+import {TagService} from '../../services/tag.service';
 
 @Component({
   selector: 'app-post-edit',
@@ -14,13 +18,17 @@ import {MessageService} from '../../../components/message/message.service';
 })
 export class PostEditComponent implements OnInit, AfterViewInit {
   post: Post = new Post();
+  categories: Category[] = [];
+  tags: Tag[] = [];
+  scrollBarHorizontal = window.innerWidth < 960;
+  columnModeSetting = window.innerWidth < 960 ? 'standard' : 'force';
+  selectedCategory: any = [];
+  selectedTag: any = [];
+
   sub: Subscription;
   quill: any;
-
-  public customOption: any = {};
-
-  constructor(private postService: PostService, private route: ActivatedRoute, private router: Router,
-              private _notification: MessageService) {}
+  constructor(private postService: PostService, private categoryService: CategoryService, private tagService: TagService,
+              private route: ActivatedRoute, private router: Router, private _notification: MessageService) {}
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
@@ -35,8 +43,24 @@ export class PostEditComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngAfterViewInit(): void {
+  loadExtraData() {
+    this.categoryService.getAll().subscribe(data => {
+      this.categories = data;
+    });
+    this.tagService.getAll().subscribe(data => {
+      this.tags = data;
+    });
+  }
 
+  ngAfterViewInit(): void {
+    this.loadExtraData();
+  }
+
+  isSelectedCategory(row) {
+    if (this.post.categories && row) {
+      const isSelected_ = this.post.categories.findIndex(d => d.id === row.id);
+      return isSelected_ !== -1;
+    }
   }
 
   loadData(id: number) {
@@ -46,6 +70,7 @@ export class PostEditComponent implements OnInit, AfterViewInit {
   }
 
   save() {
+    this.post.categories = this.selectedCategory;
     this.postService.save(this.post).subscribe(data => {
       this.post = data;
       this._notification.create(
@@ -74,6 +99,22 @@ export class PostEditComponent implements OnInit, AfterViewInit {
     this.postService.delete(id).subscribe(data => {
       this.router.navigate(['/base/post']);
     });
+  }
+
+  onActivateCategory(event) {
+
+  }
+
+  onSelectCategory({ selected }) {
+    this.selectedCategory.splice(0, this.selectedCategory.length);
+    this.selectedCategory.push(...selected);
+  }
+
+  onActivateTag(event) {}
+
+  onSelectTag({ selected }) {
+    this.selectedTag.splice(0, this.selectedTag.length);
+    this.selectedTag.push(...selected);
   }
 
 
